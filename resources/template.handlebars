@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>9gag</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/bootstrap.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <div class="container text-center">
+
+    {{#posts}}
+        <div class="post">
+            <h1>{{title}}</h1>
+            {{#if video}}
+                <video autoplay loop controls class="embed-responsive-item">
+                    <source src="{{video}}" type="video/mp4">
+                </video>
+            {{else}}
+                <img src="{{image}}" class="img-responsive img-thumbnail" alt="post">
+            {{/if}}
+            <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#{{id}}">Show Comments</button>
+            <div id="{{id}}" class="collapse">
+            {{#comments}}
+                <p class="comment">
+                <b>{{username}}: </b>
+                    {{#if isMedia}}
+                        <br>
+                        <img src="{{content}}" class="img-responsive img-thumbnail" alt="comment">
+                    {{else}}
+                        {{{content}}}
+                    {{/if}}
+                </p>
+            {{/comments}}
+            </div>
+        </div>
+    {{/posts}}
+
+    </div>
+    <script src="static/jquery.js"></script>
+    <script src="static/bootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+body {
+    background-color: #eee;
+}
+
+.container {
+    max-width: 600px;
+}
+
+.comment {
+    background-color: #ccc;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 0;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+.comment img{
+    max-width: 200px;
+}
+
+.post {
+    border-bottom: 1px #222 solid;
+    margin-bottom: 30px;
+}
+
+.btn{
+    margin: 20px;
+}
+
+video{
+    max-width: 100%;
+}
