@@ -1,0 +1,50 @@
+{
+  "name": "9gag",
+  "version": "1.0.0",
+  "description": "Download 9GAG posts and comments",
+  "main": "src/Main.js",
+  "types": "src/Main.d.ts",
+  "scripts": {
+    "start": "node src/Main",
+    "test": "mocha --timeout 5000 --recursive tests",
+    "test:unit": "mocha tests/unit",
+    "test:integration": "mocha --timeout 5000 tests/integration",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --timeout 5000 --recursive tests",
+    "build": "tsc -p .",
+    "watch": "tsc -w -p ."
+  },
+  "keywords": [
+    "9gag",
+    "scrapper",
+    "offline",
+    "cache"
+  ],
+  "author": "Rui Almeida",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruial/9gag/issues"
+  },
+  "homepage": "https://github.com/ruial/9gag#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "fs-extra": "^2.0.0",
+    "handlebars": "^4.0.6",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/cheerio": "^0.17.31",
+    "@types/fs-extra": "0.0.37",
+    "@types/handlebars": "^4.0.31",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^6.0.54",
+    "@types/request": "0.0.39",
+    "@types/sinon": "^1.16.34",
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.5"
+  }
+}
