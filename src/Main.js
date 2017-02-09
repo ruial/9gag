@@ -16,7 +16,7 @@ function main() {
         let pages = Number(process.argv[2]);
         let output = process.argv[3];
         let section = process.argv[4];
-        let comments = Boolean(process.argv[5]);
+        let comments = process.argv[5] === "true";
         if (pages > 0) {
             let nineGag = new NineGag_1.NineGag();
             yield nineGag.readPosts(pages, section, comments);
