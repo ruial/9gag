@@ -114,7 +114,7 @@ export class NineGag {
             post.image = await this.cache(post.image, outputFolder);
             post.video = await this.cache(post.video, outputFolder);
             for (let comment of post.getComments()) {
-                comment.content = await this.cache(comment.content, outputFolder);
+                comment.text = await this.cache(comment.text, outputFolder);
             }
         }
     }

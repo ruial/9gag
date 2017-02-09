@@ -36,7 +36,7 @@ It can be used as a module to scrap memes or as a command line application to sa
         nineGag.getPosts().forEach((post => {
             console.log(post.id + " - " + post.title + " - " + (post.video || post.image) + "\n");
             post.getComments().forEach(comment => {
-                console.log("\t" + comment.username + ": " + comment.content);
+                console.log("\t" + comment.username + ": " + comment.text);
             });
             console.log("\n------------------\n");
         }));

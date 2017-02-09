@@ -1,5 +1,5 @@
 export class Comment {
 
-    constructor(public username: string, public content: string, public isMedia = false) { }
+    constructor(public username: string, public text: string, public isMedia = false) { }
 
 }
