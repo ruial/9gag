@@ -1,6 +1,6 @@
 {
   "name": "9gag",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Download 9GAG posts and comments",
   "main": "src/Main.js",
   "types": "src/Main.d.ts",
