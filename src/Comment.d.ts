@@ -1,6 +1,6 @@
 export declare class Comment {
     username: string;
-    content: string;
+    text: string;
     isMedia: boolean;
-    constructor(username: string, content: string, isMedia?: boolean);
+    constructor(username: string, text: string, isMedia?: boolean);
 }

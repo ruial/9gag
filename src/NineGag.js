@@ -94,7 +94,7 @@ class NineGag {
                 post.image = yield this.cache(post.image, outputFolder);
                 post.video = yield this.cache(post.video, outputFolder);
                 for (let comment of post.getComments()) {
-                    comment.content = yield this.cache(comment.content, outputFolder);
+                    comment.text = yield this.cache(comment.text, outputFolder);
                 }
             }
         });

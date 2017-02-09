@@ -1,8 +1,8 @@
 "use strict";
 class Comment {
-    constructor(username, content, isMedia = false) {
+    constructor(username, text, isMedia = false) {
         this.username = username;
-        this.content = content;
+        this.text = text;
         this.isMedia = isMedia;
     }
 }
