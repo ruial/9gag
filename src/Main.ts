@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import { NineGag } from "./NineGag";
 
 async function main() {

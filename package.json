@@ -1,6 +1,6 @@
 {
   "name": "9gag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Download 9GAG posts and comments",
   "main": "src/Main.js",
   "types": "src/Main.d.ts",
@@ -12,6 +12,9 @@
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --timeout 5000 --recursive tests",
     "build": "tsc -p .",
     "watch": "tsc -w -p ."
+  },
+  "bin": {
+    "9gag": "src/Main.js"
   },
   "keywords": [
     "9gag",
