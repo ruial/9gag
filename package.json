@@ -4,7 +4,8 @@
   "description": "Download 9GAG posts and comments",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index"
+    "start": "node src/index",
+    "test": "mocha --recursive"
   },
   "bin": {
     "9gag": "src/index.js"
@@ -21,7 +22,12 @@
     "url": "https://github.com/ruial/9gag/issues"
   },
   "homepage": "https://github.com/ruial/9gag#readme",
+  "dependencies": {
+    "axios": "^0.17.0"
+  },
   "devDependencies": {
-    "eslint": "^4.10.0"
+    "chai": "^4.1.2",
+    "eslint": "^4.10.0",
+    "mocha": "^4.0.1"
   }
 }
