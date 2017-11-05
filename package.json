@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive --timeout 5000",
+    "test:unit": "mocha test/unit"
   },
   "bin": {
     "9gag": "src/index.js"

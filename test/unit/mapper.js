@@ -10,7 +10,7 @@ const postFixtures = require('../fixtures/posts');
 const commentFixtures = require('../fixtures/comments');
 
 
-describe('api mapping', () => {
+describe('Api Mapping', () => {
 
   it('should convert posts', () => {
     const posts = mapper.readPosts(postFixtures);
