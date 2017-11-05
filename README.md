@@ -3,6 +3,8 @@ A nodejs package to download 9GAG posts and comments.
 
 It can be used as a module to scrap memes or as a command line application to save data to a local folder and generate an HTML file for offline use.
 
+Node.js 8 or above required due to Async/Await usage.
+
 ## Install
     npm install 9gag
 
@@ -16,7 +18,7 @@ It can be used as a module to scrap memes or as a command line application to sa
 ### Scrap post titles and images using Async/Await
     const NineGag = require('9gag');
     const Scraper = NineGag.Scraper;
-    
+
     async function memes() {
         const scraper = new Scraper(10);
         try {
