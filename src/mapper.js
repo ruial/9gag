@@ -1,28 +1,36 @@
 const Post = require('./post');
 const Comment = require('./comment');
+const Type = require('./type');
 
 function readPost(post) {
-  const image = post.type === 'Animated' ? post.images.image460sv.url : post.images.image460.url;
-  return new Post(post.id, post.url, post.title, post.type, post.nsfw, post.hasLongPostCover, post.upVoteCount, post.commentsCount, image);
+  let image;
+  let type;
+  if (post.type === 'Animated') {
+    type = Type.VIDEO;
+    image = post.images.image460sv.url;
+  }
+  else {
+    type = Type.IMAGE;
+    image = post.images.image460.url;
+  }
+  return new Post(post.id, post.url, post.title, type, post.nsfw, post.hasLongPostCover, post.upVoteCount, post.commentsCount, image);
 }
 
 function readComment(comment) {
   let content;
+  let type;
   if (comment.type === 'text') {
+    type = Type.TEXT;
     content = comment.mediaText;
   }
   else {
-    const media = comment.media[0].imageMetaByType;
-    if (media.type === 'STATIC') {
-      content = media.image.url;
-    }
-    else {
-      content = media.video.url || media.animated.url;
-    }
+    type = Type.IMAGE;
+    const media = comment.type === 'userMedia' ? comment.media[0].imageMetaByType : comment.embedMediaMeta.embedImage;
+    content = media.type === 'STATIC' ? media.image.url : media.animated.url;
   }
   let reply = comment.children[0];
   if (reply) reply = readComment(reply);
-  return new Comment(comment.commentId, comment.timestamp, comment.user.displayName, comment.likeCount, comment.type, content, reply);
+  return new Comment(comment.commentId, comment.timestamp, comment.user.displayName, comment.likeCount, type, content, reply);
 }
 
 function readPosts(postsData) {

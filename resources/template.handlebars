@@ -12,32 +12,36 @@
 <body>
     <div class="container text-center">
 
-    {{#posts}}
+        {{#posts}}
         <div class="post">
-            <h1>{{title}}</h1>
-            {{#if video}}
-                <video autoplay loop controls class="embed-responsive-item">
-                    <source src="{{video}}" type="video/mp4">
-                </video>
+            <h1>{{{title}}}</h1>
+            {{#if isVideo}}
+            <video autoplay loop controls muted class="embed-responsive-item">
+                <source src="{{content}}" type="video/mp4">
+            </video>
             {{else}}
-                <img src="{{image}}" class="img-responsive img-thumbnail" alt="post">
-            {{/if}}
+            <img src="{{content}}" class="img-responsive img-thumbnail" alt="post"> {{/if}}
             <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#{{id}}">Show Comments</button>
             <div id="{{id}}" class="collapse">
-            {{#comments}}
-                <p class="comment">
-                <b>{{username}}: </b>
-                    {{#if isMedia}}
+                {{#comments}}
+                <div class="comment">
+                    <b>{{user}}: </b>
+                    {{#if isText}} {{{content}}} {{else}}
+                    <br>
+                    <img src="{{content}}" class="img-responsive img-thumbnail" alt="comment"> {{/if}} {{#if reply}}
+                    <div class="reply">
+                        {{#with reply}}
+                        <b>{{user}}: </b>
+                        {{#if isText}} {{{content}}} {{else}}
                         <br>
-                        <img src="{{text}}" class="img-responsive img-thumbnail" alt="comment">
-                    {{else}}
-                        {{{text}}}
+                        <img src="{{content}}" class="img-responsive img-thumbnail" alt="comment"> {{/if}} {{/with}}
+                    </div>
                     {{/if}}
-                </p>
-            {{/comments}}
+                </div>
+                {{/comments}}
             </div>
         </div>
-    {{/posts}}
+        {{/posts}}
 
     </div>
     <script src="static/jquery.js"></script>

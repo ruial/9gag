@@ -18,12 +18,18 @@
   ],
   "author": "Rui Almeida",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruial/9gag.git"
+  },
   "bugs": {
     "url": "https://github.com/ruial/9gag/issues"
   },
   "homepage": "https://github.com/ruial/9gag#readme",
   "dependencies": {
-    "axios": "^0.17.0"
+    "axios": "^0.17.0",
+    "fs-extra": "^4.0.2",
+    "handlebars": "^4.0.11"
   },
   "devDependencies": {
     "chai": "^4.1.2",

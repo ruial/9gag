@@ -1,3 +1,5 @@
+const Type = require('./type');
+
 class Comment {
   constructor(id, timestamp, user, likes, type, content, reply) {
     this.id = id;
@@ -8,6 +10,11 @@ class Comment {
     this.content = content;
     this.reply = reply;
   }
+
+  isText() {
+    return this.type === Type.TEXT;
+  }
+
 }
 
 module.exports = Comment;

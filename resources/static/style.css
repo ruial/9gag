@@ -11,12 +11,18 @@ body {
     border-radius: 10px;
     margin: 20px;
     margin-top: 0;
-    padding: 5px;
+    padding: 10px;
     word-wrap: break-word;
 }
 
-.comment img{
+.comment img {
     max-width: 200px;
+}
+
+.reply {
+    padding-top: 5px;
+    margin-top: 5px;
+    border-top: 1px solid #aaa;
 }
 
 .post {
@@ -24,10 +30,10 @@ body {
     margin-bottom: 30px;
 }
 
-.btn{
+.btn {
     margin: 20px;
 }
 
-video{
+video {
     max-width: 100%;
 }

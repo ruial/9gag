@@ -1,5 +1,7 @@
+const Type = require('./type');
+
 class Post {
-  constructor(id, url, title, type, nsfw, hasLongPostCover, upVoteCount, commentsCount, image) {
+  constructor(id, url, title, type, nsfw, hasLongPostCover, upVoteCount, commentsCount, content) {
     this.id = id;
     this.url = url;
     this.title = title;
@@ -8,9 +10,14 @@ class Post {
     this.hasLongPostCover = hasLongPostCover;
     this.upVoteCount = upVoteCount;
     this.commentsCount = commentsCount;
-    this.image = image;
+    this.content = content;
     this.comments = [];
   }
+
+  isVideo() {
+    return this.type === Type.VIDEO;
+  }
+
 }
 
 module.exports = Post;

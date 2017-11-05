@@ -8,7 +8,8 @@ const BASE_COMMENTS_URL = 'https://comment-cdn.9gag.com/v1/topComments.json?appI
 class Scraper {
 
   constructor(postCount, section = 'hot', commentCount = 3) {
-    if (postCount <= 0) throw new Error('Post count must be positive');
+    if (postCount < 0) throw new Error('Post count must be positive');
+    if (commentCount < 0) throw new Error('Comment count must be positive');
     this.postCount = postCount;
     this.section = section;
     this.commentCount = commentCount;
@@ -24,6 +25,11 @@ class Scraper {
     return `${BASE_COMMENTS_URL}${postId}&order=score&commentL1=${this.commentCount}&commentL2=1`;
   }
 
+  /**
+   * Scraps 9gag from he start or continues after some post id
+   * 
+   * @param {string} [lastPostId] - Last scrapped post id
+   */
   async scrap(lastPostId) {
     let result = [];
     const pages = Math.ceil(this.postCount / POSTS_PER_PAGE);
