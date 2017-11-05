@@ -8,36 +8,43 @@ It can be used as a module to scrap memes or as a command line application to sa
 
 ## Examples
 ### CLI
-    9gag <pages_count> [<folder> default:output] [<section> default:hot] [<comments> default:false]
-    9gag 3
-    9gag 1 output trending true
+    9gag <post_count> [<folder> default:output] [<section> default:hot] [<comment_count> default:0]
+    9gag 10
+    9gag 20 output trending 3
 
 
-### Read Post Titles (TypeScript)
-    import { NineGag } from "9gag";
+### Scrap post titles and images using Async/Await
+    const NineGag = require('9gag');
+    const Scraper = NineGag.Scraper;
+    
+    async function memes() {
+        const scraper = new Scraper(10);
+        try {
+            const posts = await scraper.scrap();
+            posts.forEach(post => console.log(`${post.title} -> ${post.content}`));
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
 
-    async function showPostTitles(pages: number) {
-        let nineGag = new NineGag();
-        await nineGag.readPosts(pages);
-        nineGag.getPosts().forEach(post => {
-            console.log(post.title);
-        });
-    };
-
-    showPostTitles(1);
+    memes();
 
 
-### Read Posts and Comments (ES6 JavaScript)
-    const NineGag = require("9gag").NineGag;
 
-    let nineGag = new NineGag();
+### Downloading posts and comments using Promises
+    const NineGag = require('9gag');
+    const Scraper = NineGag.Scraper;
+    const Downloader = NineGag.Downloader;
 
-    nineGag.readPosts(1, "trending", true).then(() => {
-        nineGag.getPosts().forEach((post => {
-            console.log(post.id + " - " + post.title + " - " + (post.video || post.image) + "\n");
-            post.getComments().forEach(comment => {
-                console.log("\t" + comment.username + ": " + comment.text);
-            });
-            console.log("\n------------------\n");
-        }));
-    });
+
+    const scraper = new Scraper(10, 'hot', 3);
+    scraper.scrap()
+        .then(posts => {
+            console.log(posts);
+            return new Downloader('output').downloadPosts(posts);
+        })
+        .then(() => {
+            console.log('Finished writing html page.');
+        })
+        .catch(err => console.error(err));

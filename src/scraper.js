@@ -7,9 +7,9 @@ const BASE_COMMENTS_URL = 'https://comment-cdn.9gag.com/v1/topComments.json?appI
 
 class Scraper {
 
-  constructor(postCount, section = 'hot', commentCount = 3) {
-    if (postCount < 0) throw new Error('Post count must be positive');
-    if (commentCount < 0) throw new Error('Comment count must be positive');
+  constructor(postCount, section = 'hot', commentCount = 0) {
+    if (postCount <= 0) throw new Error('Post count must be positive');
+    if (commentCount < 0) throw new Error('Comment count cannot be negative');
     this.postCount = postCount;
     this.section = section;
     this.commentCount = commentCount;
