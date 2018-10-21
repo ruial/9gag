@@ -1,6 +1,6 @@
 {
   "name": "9gag",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Download 9GAG posts and comments",
   "main": "src/index.js",
   "scripts": {
@@ -28,13 +28,13 @@
   },
   "homepage": "https://github.com/ruial/9gag#readme",
   "dependencies": {
-    "axios": "^0.17.0",
-    "fs-extra": "^4.0.2",
-    "handlebars": "^4.0.11"
+    "axios": "^0.18.0",
+    "fs-extra": "^7.0.0",
+    "handlebars": "^4.0.12"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "eslint": "^4.10.0",
-    "mocha": "^4.0.1"
+    "chai": "^4.2.0",
+    "eslint": "^5.7.0",
+    "mocha": "^5.2.0"
   }
 }
