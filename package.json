@@ -1,6 +1,6 @@
 {
   "name": "9gag",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Download 9GAG posts and comments",
   "main": "src/index.js",
   "scripts": {
@@ -30,7 +30,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "fs-extra": "^7.0.0",
-    "handlebars": "^4.0.12"
+    "handlebars": "^4.0.12",
+    "puppeteer": "^2.1.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",

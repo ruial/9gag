@@ -6,6 +6,7 @@ const Type = require('./type');
 const mapper = require('./mapper');
 const Scraper = require('./scraper');
 const Downloader = require('./downloader');
+const HttpClient = require('./httpclient');
 
 async function main() {
   const postCount = Number(process.argv[2]);
@@ -14,8 +15,11 @@ async function main() {
   const commentCount = Number(process.argv[5]);
 
   try {
-    const scraper = new Scraper(postCount, section, commentCount);
+    const httpClient = new HttpClient();
+    await httpClient.init();
+    const scraper = new Scraper(httpClient, postCount, section, commentCount);
     const posts = await scraper.scrap();
+    await httpClient.close();
     console.log(posts);
 
     const downloader = new Downloader(outputFolder);
