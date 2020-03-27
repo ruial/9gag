@@ -1,6 +1,6 @@
 {
   "name": "9gag",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Download 9GAG posts and comments",
   "main": "src/index.js",
   "scripts": {
@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/ruial/9gag#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "fs-extra": "^7.0.0",
-    "handlebars": "^4.0.12",
+    "axios": "^0.19.2",
+    "fs-extra": "^8.1.0",
+    "handlebars": "^4.7.3",
     "puppeteer": "^2.1.1"
   },
   "devDependencies": {

@@ -44,7 +44,7 @@ class Downloader {
     // load template
     const data = await fse.readFile(TEMPLATE_PATH, 'utf8');
     const template = handlebars.compile(data);
-    const result = template({ posts: posts });
+    const result = template({ posts: posts }, { allowedProtoMethods: { isVideo: true, isText: true} });
     // write html page
     await fse.writeFile(path.join(this.outputFolder, OUTPUT_FILE), result);
   }
