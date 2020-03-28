@@ -5,7 +5,7 @@ const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 class HttpClient {
 
   async init(userAgent = DEFAULT_USER_AGENT) {
-    this.browser = await puppeteer.launch({headless: true});
+    this.browser = await puppeteer.launch({headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox']});
     this.page = await this.browser.newPage();
     this.page.setUserAgent(userAgent);
   }
