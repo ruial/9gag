@@ -42,3 +42,4 @@ exports.Type = Type;
 exports.mapper = mapper;
 exports.Scraper = Scraper;
 exports.Downloader = Downloader;
+exports.HttpClient = HttpClient;

@@ -28,16 +28,18 @@ Node.js 8 or above required due to Async/Await usage.
 ### Scrap posts and comments with images
 
     const NineGag = require('9gag');
+    const HttpClient = NineGag.HttpClient;
     const Scraper = NineGag.Scraper;
+    const Downloader = NineGag.Downloader;
 
     async function memes() {
         try {
             const httpClient = new HttpClient();
             await httpClient.init();
-            const scraper = new Scraper(httpClient, 10, 'hot', 0);
+            const scraper = new Scraper(httpClient, 10, 'hot', 3);
             const posts = await scraper.scrap();
             await httpClient.close();
-            posts.forEach(post => console.log(`${post.title} -> ${post.content}`));
+            posts.forEach(p => console.log(`${p.title} -> ${p.content} -> ${p.comments.map(c => c.content)[0]}`));
             await new Downloader('output').downloadPosts(posts);
         }
         catch (err) {
