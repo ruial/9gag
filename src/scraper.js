@@ -7,7 +7,7 @@ const BASE_COMMENTS_URL = 'https://comment-cdn.9gag.com/v1/topComments.json?appI
 class Scraper {
 
   constructor(httpClient, postCount, section = 'hot', commentCount = 0) {
-    if(httpClient == undefined) throw new Error('Expected an http client');
+    if (httpClient == undefined) throw new Error('Expected an http client');
     if (postCount <= 0) throw new Error('Post count must be positive');
     if (commentCount < 0) throw new Error('Comment count cannot be negative');
     this.httpClient = httpClient;
