@@ -10,6 +10,8 @@ Node.js 8 or above required due to Async/Await usage.
 
     npm install 9gag
 
+Since Puppeteer is needed to handle Cloudflare, check this [troubleshooting](https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md) page to setup required dependencies.
+
 ## Examples
 
 ### CLI
