@@ -10,8 +10,6 @@ Node.js 8 or above required due to Async/Await usage.
 
     npm install 9gag
 
-Since Puppeteer is needed to handle Cloudflare, check this [troubleshooting](https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md) page to setup required dependencies.
-
 ## Examples
 
 ### CLI
@@ -30,17 +28,15 @@ Since Puppeteer is needed to handle Cloudflare, check this [troubleshooting](htt
 ### Scrap posts and comments with images
 
     const NineGag = require('9gag');
-    const HttpClient = NineGag.HttpClient;
     const Scraper = NineGag.Scraper;
     const Downloader = NineGag.Downloader;
 
     async function memes() {
         try {
-            const httpClient = new HttpClient();
-            await httpClient.init();
-            const scraper = new Scraper(httpClient, 10, 'hot', 3);
+            // number of posts, section and number of comments
+            // can pass a custom http client as the last Scraper argument
+            const scraper = new Scraper(10, 'hot', 3);
             const posts = await scraper.scrap();
-            await httpClient.close();
             posts.forEach(p => console.log(`${p.title} -> ${p.content} -> ${p.comments.map(c => c.content)[0]}`));
             await new Downloader('output').downloadPosts(posts);
         }

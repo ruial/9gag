@@ -1,6 +1,6 @@
 const fse = require('fs-extra');
 const path = require('path');
-const axios = require('axios');
+const fetch = require('node-fetch');
 const handlebars = require('handlebars');
 
 const STATIC_FOLDER = 'static';
@@ -12,9 +12,9 @@ const OUTPUT_FILE = 'index.html';
 
 function downloadFile(url, path) {
   return new Promise((resolve, reject) => {
-    axios.get(url, { responseType: 'stream' })
-      .then(response => {
-        response.data.pipe(fse.createWriteStream(path)).on('close', resolve).on('error', reject);
+    fetch(url)
+      .then(res => {
+        res.body.pipe(fse.createWriteStream(path)).on('finish', resolve).on('error', reject);
       })
       .catch(reject);
   });
@@ -51,7 +51,7 @@ class Downloader {
 
   async _downloadPosts(posts) {
     for (let post of posts) {
-      post.image = await this._downloadMedia(post.image);
+      post.content = await this._downloadMedia(post.content);
       for (let comment of post.comments) {
         comment.content = await this._downloadMedia(comment.content);
         if (comment.reply) comment.reply.content = await this._downloadMedia(comment.reply.content);
