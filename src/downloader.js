@@ -36,7 +36,10 @@ class Downloader {
     // clean output folder
     await fse.remove(this.outputFolder);
     // create required directory structure
-    await fse.mkdirp(path.join(this.outputFolder, MEDIA_FOLDER));
+    await /* TODO: JSFIX could not patch the breaking change:
+    Creating a directory with fs-extra no longer returns the path 
+    Suggested fix: The returned promise no longer includes the path of the new directory */
+    fse.mkdirp(path.join(this.outputFolder, MEDIA_FOLDER));
     // copy static files
     await fse.copy(path.join(RESOURCES, STATIC_FOLDER), path.join(this.outputFolder, STATIC_FOLDER));
     // download images and videos
